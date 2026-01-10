@@ -1,0 +1,123 @@
+import { Link, useLocation } from "wouter";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, Moon, Sun, Stars, Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  const navItems = [
+    { label: "Home", href: "/", icon: <Stars className="w-4 h-4" /> },
+    { label: "Tarot", href: "/tarot", icon: <Moon className="w-4 h-4" /> },
+    { label: "Fortune Ball", href: "/fortune-ball", icon: <Sparkles className="w-4 h-4" /> },
+    { label: "Kundali", href: "/kundali", icon: <Sun className="w-4 h-4" /> },
+    { label: "Numerology", href: "/numerology", icon: <Stars className="w-4 h-4" /> },
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col font-sans relative overflow-hidden">
+      {/* Mystic Ambient Background Elements */}
+      <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Navigation */}
+      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-lg">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+            <div className="relative">
+              <Sparkles className="w-8 h-8 text-primary group-hover:animate-spin-slow transition-all duration-700" />
+              <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full animate-pulse" />
+            </div>
+            <span className="font-display text-2xl font-bold tracking-wider gold-gradient-text">
+              MysticOracle
+            </span>
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => (
+              <Link 
+                key={item.href} 
+                href={item.href}
+                className={`
+                  flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary
+                  ${location === item.href ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}
+                `}
+              >
+                {item.icon}
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Toggle */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden text-primary hover:bg-white/5"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </Button>
+        </div>
+
+        {/* Mobile Nav Dropdown */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden border-t border-white/5 bg-background/95 backdrop-blur-xl overflow-hidden"
+            >
+              <nav className="flex flex-col p-4 gap-4">
+                {navItems.map((item) => (
+                  <Link 
+                    key={item.href} 
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`
+                      flex items-center gap-3 p-3 rounded-lg transition-colors
+                      ${location === item.href ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-white/5"}
+                    `}
+                  >
+                    {item.icon}
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* Main Content */}
+      <main className="flex-1 container mx-auto px-4 py-8 relative z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+
+      <footer className="border-t border-white/5 py-8 mt-12 bg-black/20">
+        <div className="container mx-auto px-4 text-center text-muted-foreground text-sm font-display">
+          <p className="mb-2">© {new Date().getFullYear()} MysticOracle. Unveil your destiny.</p>
+          <div className="flex justify-center gap-4 text-xs opacity-60">
+            <span>Tarot Readings</span> • 
+            <span>Vedic Kundali</span> • 
+            <span>Numerology Insights</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

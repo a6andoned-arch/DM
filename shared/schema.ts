@@ -1,18 +1,44 @@
-import { sql } from "drizzle-orm";
-import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const users = pgTable("users", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  username: text("username").notNull().unique(),
-  password: text("password").notNull(),
+export const readings = pgTable("readings", {
+  id: serial("id").primaryKey(),
+  type: text("type").notNull(), // tarot, fortune-ball, kundali, numerology
+  input: jsonb("input").notNull(), // User input (name, dob, question, card selection)
+  output: jsonb("output").notNull(), // The AI generated response
+  createdAt: text("created_at").notNull().default(new Date().toISOString()),
 });
 
-export const insertUserSchema = createInsertSchema(users).pick({
-  username: true,
-  password: true,
+export const insertReadingSchema = createInsertSchema(readings).omit({ id: true, createdAt: true });
+
+export type Reading = typeof readings.$inferSelect;
+export type InsertReading = z.infer<typeof insertReadingSchema>;
+
+// Input schemas for each type
+export const tarotInputSchema = z.object({
+  question: z.string(),
+  spread: z.enum(["single", "three-card", "celtic-cross"]),
+  cards: z.array(z.string()).optional(), // Cards drawn
 });
 
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
+export const fortuneBallInputSchema = z.object({
+  question: z.string(),
+});
+
+export const kundaliInputSchema = z.object({
+  name: z.string(),
+  dob: z.string(), // ISO date string
+  pob: z.string(), // Place of birth
+  tob: z.string(), // Time of birth
+});
+
+export const numerologyInputSchema = z.object({
+  name: z.string(),
+  dob: z.string(), // ISO date string
+});
+
+export type TarotInput = z.infer<typeof tarotInputSchema>;
+export type FortuneBallInput = z.infer<typeof fortuneBallInputSchema>;
+export type KundaliInput = z.infer<typeof kundaliInputSchema>;
+export type NumerologyInput = z.infer<typeof numerologyInputSchema>;
