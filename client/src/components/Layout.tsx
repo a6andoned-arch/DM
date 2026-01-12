@@ -109,8 +109,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </AnimatePresence>
       </main>
 
-      <footer className="border-t border-white/5 py-8 mt-12 bg-black/20">
-        <div className="container mx-auto px-4 text-center">
+      <footer className="border-t border-white/5 bg-black/20 mt-auto">
+        <div className="container mx-auto px-4 py-8 text-center">
           <div className="mb-8">
             <a 
               href="https://tango.me/voido" 
