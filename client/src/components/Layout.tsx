@@ -24,16 +24,17 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <div className="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Navigation */}
-      <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-background/80 backdrop-blur-lg">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer">
+      <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-black/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+          <Link href="/" className="flex items-center group cursor-pointer">
             <div className="relative">
-              <img src="https://i.ibb.co/whDPvFtK/Dark-Magic-Favicon.png" className="w-8 h-8 group-hover:animate-spin-slow transition-all duration-700" alt="Dark Magic" />
-              <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full animate-pulse" />
+              <img 
+                src="https://i.ibb.co/4wf90k3q/Dark-Magic.png" 
+                className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
+                alt="Dark Magic" 
+              />
+              <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
-            <span className="font-display text-2xl font-bold tracking-wider gold-gradient-text">
-              Dark Magic
-            </span>
           </Link>
 
           {/* Desktop Nav */}
