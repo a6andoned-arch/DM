@@ -37,18 +37,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6 overflow-x-auto no-scrollbar">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6 whitespace-nowrap overflow-x-visible">
             {navItems.map((item) => (
               <Link 
                 key={item.href} 
                 href={item.href}
                 className={`
-                  flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary
+                  flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary py-2
                   ${location === item.href ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}
                 `}
               >
-                {item.icon}
-                {item.label}
+                <span className="shrink-0">{item.icon}</span>
+                <span>{item.label}</span>
               </Link>
             ))}
           </nav>
@@ -57,7 +57,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Button 
             variant="ghost" 
             size="icon" 
-            className="md:hidden text-primary hover:bg-white/5"
+            className="lg:hidden text-primary hover:bg-white/5"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -71,7 +71,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden border-t border-white/5 bg-background/95 backdrop-blur-xl overflow-hidden"
+              className="lg:hidden border-t border-white/5 bg-background/95 backdrop-blur-xl overflow-hidden"
             >
               <nav className="flex flex-col p-4 gap-4">
                 {navItems.map((item) => (
