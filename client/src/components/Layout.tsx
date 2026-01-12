@@ -111,25 +111,25 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
       <footer className="border-t border-white/5 bg-black/20 mt-auto">
         <div className="container mx-auto px-4 py-8 text-center">
-          <div className="mb-8">
+          <div className="mb-10">
             <a 
               href="https://tango.me/voido" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-2 border border-primary/50 bg-black/40 text-primary rounded-full font-display text-sm hover:bg-primary hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+              className="inline-flex items-center gap-3 px-10 py-4 border-2 border-primary/50 bg-black/40 text-primary rounded-full font-display text-lg hover:bg-primary hover:text-black transition-all duration-300 shadow-[0_0_25px_rgba(212,175,55,0.15)] hover:shadow-[0_0_35px_rgba(212,175,55,0.4)] transform hover:scale-105"
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-6 h-6" />
               Support the Shadows
             </a>
           </div>
-          <div className="text-muted-foreground text-sm font-display">
-            <p className="mb-2">© {new Date().getFullYear()} Dark Magic. Unveil your destiny.</p>
+          <div className="text-muted-foreground text-sm font-display flex flex-col items-center gap-4">
             <div className="flex justify-center gap-4 text-xs opacity-60">
               <span>Tarot Readings</span> • 
               <span>Vedic Kundali</span> • 
               <span>Numerology Insights</span> •
               <span>Shadow Search</span>
             </div>
+            <p className="opacity-40">© {new Date().getFullYear()} Dark Magic. Unveil your destiny.</p>
           </div>
         </div>
       </footer>
