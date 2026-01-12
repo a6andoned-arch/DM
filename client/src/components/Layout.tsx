@@ -24,7 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <div className="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Navigation */}
-      <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-black/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+      <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-gray-400/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center group cursor-pointer">
             <div className="relative">
