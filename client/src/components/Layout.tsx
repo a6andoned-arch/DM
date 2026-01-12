@@ -14,6 +14,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     { label: "Fortune Ball", href: "/fortune-ball", icon: <Sparkles className="w-4 h-4" /> },
     { label: "Kundali", href: "/kundali", icon: <Sun className="w-4 h-4" /> },
     { label: "Numerology", href: "/numerology", icon: <Stars className="w-4 h-4" /> },
+    { label: "Dark Magic", href: "/dark-magic", icon: <Moon className="w-4 h-4" /> },
   ];
 
   return (
@@ -27,11 +28,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group cursor-pointer">
             <div className="relative">
-              <Sparkles className="w-8 h-8 text-primary group-hover:animate-spin-slow transition-all duration-700" />
+              <img src="https://i.ibb.co/whDPvFtK/Dark-Magic-Favicon.png" className="w-8 h-8 group-hover:animate-spin-slow transition-all duration-700" alt="Dark Magic" />
               <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full animate-pulse" />
             </div>
             <span className="font-display text-2xl font-bold tracking-wider gold-gradient-text">
-              MysticOracle
+              Dark Magic
             </span>
           </Link>
 
@@ -109,12 +110,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </main>
 
       <footer className="border-t border-white/5 py-8 mt-12 bg-black/20">
-        <div className="container mx-auto px-4 text-center text-muted-foreground text-sm font-display">
-          <p className="mb-2">© {new Date().getFullYear()} MysticOracle. Unveil your destiny.</p>
-          <div className="flex justify-center gap-4 text-xs opacity-60">
-            <span>Tarot Readings</span> • 
-            <span>Vedic Kundali</span> • 
-            <span>Numerology Insights</span>
+        <div className="container mx-auto px-4 text-center">
+          <div className="mb-8">
+            <a 
+              href="https://tango.me/voido" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-2 border border-primary/50 bg-black/40 text-primary rounded-full font-display text-sm hover:bg-primary hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+            >
+              <Sparkles className="w-4 h-4" />
+              Support the Shadows
+            </a>
+          </div>
+          <div className="text-muted-foreground text-sm font-display">
+            <p className="mb-2">© {new Date().getFullYear()} Dark Magic. Unveil your destiny.</p>
+            <div className="flex justify-center gap-4 text-xs opacity-60">
+              <span>Tarot Readings</span> • 
+              <span>Vedic Kundali</span> • 
+              <span>Numerology Insights</span> •
+              <span>Shadow Search</span>
+            </div>
           </div>
         </div>
       </footer>

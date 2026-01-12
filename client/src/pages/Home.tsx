@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Sparkles, Moon, Sun, Stars, ArrowRight } from "lucide-react";
+import { Sparkles, Moon, Sun, Stars, ArrowRight, Search } from "lucide-react";
 
 const features = [
   {
@@ -34,6 +34,14 @@ const features = [
     href: "/numerology",
     bg: "from-pink-900/50 to-rose-900/50",
     delay: 0.4
+  },
+  {
+    title: "Shadow Search",
+    desc: "Unveil the forbidden rituals hidden within the digital void for your dark questions.",
+    icon: <Search className="w-8 h-8 text-red-500" />,
+    href: "/dark-magic",
+    bg: "from-gray-900 to-red-950/40",
+    delay: 0.5
   }
 ];
 
@@ -52,13 +60,11 @@ export default function Home() {
         </motion.div>
         
         <h1 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight drop-shadow-2xl">
-          Unlock the <span className="gold-gradient-text">Mysteries</span> <br />
-          of the Universe
+          Dark Magic
         </h1>
         
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
-          Connect with ancient wisdom through modern technology. 
-          Discover what the stars, cards, and numbers have in store for you today.
+          Welcome to the shadows. Unlock the mysteries of the forbidden.
         </p>
 
         {/* Decorative elements */}

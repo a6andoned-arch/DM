@@ -9,6 +9,7 @@ import Tarot from "@/pages/Tarot";
 import FortuneBall from "@/pages/FortuneBall";
 import Kundali from "@/pages/Kundali";
 import Numerology from "@/pages/Numerology";
+import DarkMagic from "@/pages/DarkMagic";
 
 function Router() {
   return (
@@ -19,6 +20,7 @@ function Router() {
         <Route path="/fortune-ball" component={FortuneBall} />
         <Route path="/kundali" component={Kundali} />
         <Route path="/numerology" component={Numerology} />
+        <Route path="/dark-magic" component={DarkMagic} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
