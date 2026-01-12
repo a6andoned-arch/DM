@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Sparkles, Moon, Sun, Stars, ArrowRight, Search } from "lucide-react";
+import { Sparkles, Moon, Sun, Stars, ArrowRight, Search, AlertTriangle } from "lucide-react";
 
 const features = [
   {
@@ -107,25 +107,24 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Stock Image - Scenic Night Sky */}
-      <div className="relative rounded-3xl overflow-hidden h-[300px] md:h-[400px] w-full max-w-6xl mx-auto mt-8 border border-white/10 shadow-2xl">
-        <div className="absolute inset-0 bg-black/40 z-10 flex flex-col items-center justify-center text-center p-6">
-          <h2 className="text-3xl md:text-5xl font-display text-white mb-4">Ready to seek the truth?</h2>
-          <p className="text-white/80 max-w-lg mb-8">
-            Your path is written in the cosmos. Let us help you read it.
-          </p>
-          <Link href="/tarot">
-            <button className="px-8 py-3 bg-primary text-black font-bold rounded-full hover:bg-white transition-colors duration-300 transform hover:scale-105">
-              Start a Reading
-            </button>
-          </Link>
+      {/* Disclaimer Section */}
+      <div className="relative rounded-3xl overflow-hidden h-auto w-full max-w-6xl mx-auto mt-8 border border-white/10 shadow-2xl bg-black/40 backdrop-blur-md p-8">
+        <div className="z-10 flex flex-col items-center justify-center text-center">
+          <h2 className="text-2xl md:text-3xl font-display text-primary mb-4 flex items-center gap-2">
+            <AlertTriangle className="w-6 h-6" />
+            Disclaimer
+          </h2>
+          <div className="text-white/70 max-w-2xl text-sm leading-relaxed space-y-4">
+            <p>
+              The information and rituals provided on this website are for educational and entertainment purposes only. 
+              Dark Magic/Black Magic practices involve deep spiritual and psychological complexities that can have unpredictable results.
+            </p>
+            <p>
+              By using these tools, you acknowledge that you are responsible for your own actions and their consequences. 
+              We do not promote harm or illegal activities. Consult with professionals for serious life decisions.
+            </p>
+          </div>
         </div>
-        {/* Unsplash image: Night sky with stars, mystical landscape */}
-        <img 
-          src="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2000&auto=format&fit=crop" 
-          alt="Mystical night sky"
-          className="w-full h-full object-cover opacity-80"
-        />
       </div>
     </div>
   );
