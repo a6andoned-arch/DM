@@ -4,7 +4,7 @@ import { z } from "zod";
 
 export const readings = pgTable("readings", {
   id: serial("id").primaryKey(),
-  type: text("type").notNull(), // tarot, fortune-ball, kundali, numerology
+  type: text("type").notNull(), // tarot, fortune-ball, kundali, numerology, dark-magic
   input: jsonb("input").notNull(), // User input (name, dob, question, card selection)
   output: jsonb("output").notNull(), // The AI generated response
   createdAt: text("created_at").notNull().default(new Date().toISOString()),
@@ -38,7 +38,12 @@ export const numerologyInputSchema = z.object({
   dob: z.string(), // ISO date string
 });
 
+export const darkMagicInputSchema = z.object({
+  question: z.string(),
+});
+
 export type TarotInput = z.infer<typeof tarotInputSchema>;
 export type FortuneBallInput = z.infer<typeof fortuneBallInputSchema>;
 export type KundaliInput = z.infer<typeof kundaliInputSchema>;
 export type NumerologyInput = z.infer<typeof numerologyInputSchema>;
+export type DarkMagicInput = z.infer<typeof darkMagicInputSchema>;

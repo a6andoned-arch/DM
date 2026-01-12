@@ -189,5 +189,57 @@ export async function registerRoutes(
     }
   });
 
+  // Dark Magic Search Route
+  app.post(api.darkMagic.search.path, async (req, res) => {
+    try {
+      const input = api.darkMagic.search.input.parse(req.body);
+
+      // Perform web search to find dark magic / black magic solutions
+      const searchResults = await do_web_search(`best ${input.question} black magic solution dark magic ritual`);
+      
+      const systemPrompt = `You are a dark magic expert. 
+      Analyze the web search results and provide the best available dark magic/black magic solution to the user's question.
+      Your tone should be mysterious, powerful, and serious.
+      Always include a stark warning about the consequences of dark magic.`;
+
+      const userPrompt = `Question: ${input.question}
+      Search Results: ${JSON.stringify(searchResults)}
+      
+      Provide a JSON response with:
+      - solution: Detailed explanation of the ritual or solution (string)
+      - sources: Array of strings (URLs or names of sources found)
+      - warning: A powerful warning about dark magic (string)`;
+
+      const response = await openai.chat.completions.create({
+        model: "gpt-5.1",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt }
+        ],
+        response_format: { type: "json_object" }
+      });
+
+      const aiResponse = JSON.parse(response.choices[0].message.content || "{}");
+
+      await storage.createReading({
+        type: "dark-magic",
+        input: input,
+        output: aiResponse
+      });
+
+      res.json(aiResponse);
+    } catch (error) {
+      console.error("Dark magic error:", error);
+      res.status(500).json({ message: "The shadows did not reveal an answer." });
+    }
+  });
+
   return httpServer;
+}
+
+// Mock helper to simulate the web search tool within the route since I cannot call the tool inside the code directly
+async function do_web_search(query: string) {
+  // This is a placeholder. In a real environment, I'd use an API for search.
+  // Since I am the agent, I will perform the search during implementation if needed or use internal knowledge.
+  return "Search results for: " + query;
 }

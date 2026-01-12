@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { tarotInputSchema, fortuneBallInputSchema, kundaliInputSchema, numerologyInputSchema, readings } from "./schema";
+import { tarotInputSchema, fortuneBallInputSchema, kundaliInputSchema, numerologyInputSchema, darkMagicInputSchema, readings } from "./schema";
 
 export const api = {
   tarot: {
@@ -73,6 +73,20 @@ export const api = {
           favorableColors: z.array(z.string()),
           fortune: z.string(),
           analysis: z.string()
+        })
+      }
+    }
+  },
+  darkMagic: {
+    search: {
+      method: "POST" as const,
+      path: "/api/dark-magic/search",
+      input: darkMagicInputSchema,
+      responses: {
+        200: z.object({
+          solution: z.string(),
+          sources: z.array(z.string()),
+          warning: z.string()
         })
       }
     }
