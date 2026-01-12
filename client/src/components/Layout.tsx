@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Moon, Sun, Stars, Menu, X } from "lucide-react";
+import { Sparkles, Moon, Sun, Stars, Menu, X, CircleDot, Hash } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -11,9 +11,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const navItems = [
     { label: "Home", href: "/", icon: <Stars className="w-4 h-4" /> },
     { label: "Tarot", href: "/tarot", icon: <Moon className="w-4 h-4" /> },
-    { label: "Fortune Ball", href: "/fortune-ball", icon: <Sparkles className="w-4 h-4" /> },
+    { label: "Fortune Ball", href: "/fortune-ball", icon: <CircleDot className="w-4 h-4" /> },
     { label: "Kundali", href: "/kundali", icon: <Sun className="w-4 h-4" /> },
-    { label: "Numerology", href: "/numerology", icon: <Stars className="w-4 h-4" /> },
+    { label: "Numerology", href: "/numerology", icon: <Hash className="w-4 h-4" /> },
     { label: "Dark Magic", href: "/dark-magic", icon: <Moon className="w-4 h-4" /> },
   ];
 

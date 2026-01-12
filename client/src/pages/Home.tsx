@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Sparkles, Moon, Sun, Stars, ArrowRight, Search, AlertTriangle } from "lucide-react";
+import { Sparkles, Moon, Sun, Stars, ArrowRight, Search, AlertTriangle, CircleDot, Hash } from "lucide-react";
 
 const features = [
   {
@@ -14,7 +14,7 @@ const features = [
   {
     title: "Fortune Ball",
     desc: "Ask the mystical sphere your burning yes/no questions and receive guidance from the void.",
-    icon: <Sparkles className="w-8 h-8 text-cyan-400" />,
+    icon: <CircleDot className="w-8 h-8 text-cyan-400" />,
     href: "/fortune-ball",
     bg: "from-blue-900/50 to-cyan-900/50",
     delay: 0.2
@@ -30,7 +30,7 @@ const features = [
   {
     title: "Numerology",
     desc: "Unlock the secret power of numbers associated with your name and birth date.",
-    icon: <Stars className="w-8 h-8 text-pink-400" />,
+    icon: <Hash className="w-8 h-8 text-pink-400" />,
     href: "/numerology",
     bg: "from-pink-900/50 to-rose-900/50",
     delay: 0.4
