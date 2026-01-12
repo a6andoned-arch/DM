@@ -73,7 +73,7 @@ export default function Home() {
 
       {/* Feature Grid */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto w-full px-4">
-        {features.map((feature) => (
+        {features.slice(0, 4).map((feature) => (
           <Link key={feature.title} href={feature.href}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -105,6 +105,38 @@ export default function Home() {
             </motion.div>
           </Link>
         ))}
+        {/* Shadow Search - Centered */}
+        <div className="md:col-span-2 flex justify-center">
+          <Link href={features[4].href} className="w-full md:w-1/2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: features[4].delay }}
+              className={`
+                group relative h-full p-8 rounded-2xl border border-white/5 
+                bg-gradient-to-br ${features[4].bg} backdrop-blur-sm overflow-hidden
+                hover:border-primary/30 transition-all duration-300 hover:-translate-y-1
+              `}
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
+              
+              <div className="flex items-start justify-between mb-6">
+                <div className="p-3 rounded-xl bg-black/30 border border-white/10 group-hover:scale-110 transition-transform duration-300">
+                  {features[4].icon}
+                </div>
+                <ArrowRight className="text-muted-foreground group-hover:text-primary transition-colors" />
+              </div>
+              
+              <h3 className="text-2xl font-display font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                {features[4].title}
+              </h3>
+              
+              <p className="text-muted-foreground leading-relaxed">
+                {features[4].desc}
+              </p>
+            </motion.div>
+          </Link>
+        </div>
       </section>
 
       {/* Disclaimer Section */}

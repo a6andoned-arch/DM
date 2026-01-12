@@ -18,15 +18,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col font-sans relative overflow-hidden">
+    <div className="min-h-screen flex flex-col font-sans relative overflow-x-hidden">
       {/* Mystic Ambient Background Elements */}
       <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Navigation */}
       <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-black/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
-        <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center group cursor-pointer">
+        <div className="container mx-auto px-4 h-20 flex items-center justify-between gap-8">
+          <Link href="/" className="flex items-center group cursor-pointer shrink-0">
             <div className="relative p-2 rounded-lg bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30">
               <img 
                 src="https://i.ibb.co/4wf90k3q/Dark-Magic.png" 
@@ -37,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6 overflow-x-auto no-scrollbar">
             {navItems.map((item) => (
               <Link 
                 key={item.href} 
