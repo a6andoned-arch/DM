@@ -24,16 +24,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <div className="fixed bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Navigation */}
-      <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-gray-400/90 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+      <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-black/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center group cursor-pointer">
-            <div className="relative">
+            <div className="relative p-1.5 rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.05)] transition-all duration-300 group-hover:bg-white/15 group-hover:border-white/20">
               <img 
                 src="https://i.ibb.co/4wf90k3q/Dark-Magic.png" 
                 className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
                 alt="Dark Magic" 
               />
-              <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           </Link>
 
