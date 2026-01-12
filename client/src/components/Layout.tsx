@@ -27,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-[100] w-full border-b border-primary/10 bg-black/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center group cursor-pointer">
-            <div className="relative p-2 rounded-lg bg-white/30 backdrop-blur-md border border-white/40 shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300 group-hover:bg-white/40 group-hover:border-white/50 group-hover:shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+            <div className="relative p-2 rounded-lg bg-white/15 backdrop-blur-md border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300 group-hover:bg-white/20 group-hover:border-white/30">
               <img 
                 src="https://i.ibb.co/4wf90k3q/Dark-Magic.png" 
                 className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105" 
