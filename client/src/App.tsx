@@ -10,6 +10,7 @@ import FortuneBall from "@/pages/FortuneBall";
 import Kundali from "@/pages/Kundali";
 import Numerology from "@/pages/Numerology";
 import DarkMagic from "@/pages/DarkMagic";
+import MemeBattle from "@/pages/MemeBattle";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/kundali" component={Kundali} />
         <Route path="/numerology" component={Numerology} />
         <Route path="/dark-magic" component={DarkMagic} />
+        <Route path="/meme-battle" component={MemeBattle} />
         <Route component={NotFound} />
       </Switch>
     </Layout>
